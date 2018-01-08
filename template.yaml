@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion : '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: My first serverless application.
+
+Resources:
+
+  Products:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: SamTemplateFunction
+      Timeout: 30
+      Handler: com.viacom.HelloLamda
+      Runtime: java8
+      CodeUrl: ./lamda-1.0-SNAPSHOT.jar
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: any
